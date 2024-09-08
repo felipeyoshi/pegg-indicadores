@@ -13,7 +13,7 @@ def show_questions(questions, tab):
                 question["text"],
                 options=question["format"],
                 value=question["format"][2], # valor padrão como "Neutro" ou "Às vezes"
-                format_func=lambda x: "" if x in (question["format"][0], question["format"][-1]) else x  # omite os labels extremos
+                format_func=lambda x: x if x != question["format"][0] and x != question["format"][-1] else ("" if x not in st.session_state.get(question["text"], question["format"]) else x)  # omite os labels extremos
             )
 
 # Definindo todas as perguntas para cada aba
