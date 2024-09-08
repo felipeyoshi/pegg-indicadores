@@ -1,5 +1,7 @@
 import streamlit as st
 
+st.image('./images/pegg_header.jpeg')
+
 # Criando abas para cada princípio
 tabs = st.tabs(["GENTILEZA", "GENEROSIDADE", "SOLIDARIEDADE", "SUSTENTABILIDADE", "DIVERSIDADE", "RESPEITO", "CIDADANIA"])
 
