@@ -1,5 +1,14 @@
 import streamlit as st
 
+custom_css = """
+        <style>
+        [data-testid="stSliderTickBarMin"],
+        [data-testid="stSliderTickBarMax"] {
+            font-size: 0px;
+        }
+        </style>
+        """
+
 st.image('./images/pegg_header.jpeg')
 
 # Criando abas para cada princípio
@@ -9,11 +18,11 @@ tabs = st.tabs(["GENTILEZA", "GENEROSIDADE", "SOLIDARIEDADE", "SUSTENTABILIDADE"
 def show_questions(questions, tab):
     with tab:
         for question in questions:
+            st.markdown(custom_css, unsafe_allow_html=True)
             st.select_slider(
                 question["text"],
                 options=question["format"],
-                value=question["format"][2], # valor padrão como "Neutro" ou "Às vezes"
-                format_func=lambda x: x if x != question["format"][0] and x != question["format"][-1] else ("" if x not in st.session_state.get(question["text"], question["format"]) else x)  # omite os labels extremos
+                value=question["format"][2] # valor padrão como "Neutro" ou "Às vezes"
             )
 
 # Definindo todas as perguntas para cada aba
