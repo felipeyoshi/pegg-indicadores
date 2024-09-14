@@ -1,5 +1,6 @@
 import datetime
 import streamlit as st
+from utils.mysql_utils import insert_data
 
 custom_css = """
         <style>
@@ -19,7 +20,8 @@ def show_questions(questions, tab):
             st.select_slider(
                 question["text"],
                 options=question["format"],
-                value=question["format"][2] # valor padrão como "Neutro" ou "Às vezes"
+                value=question["format"][2], # valor padrão como "Neutro" ou "Às vezes"
+                key=question["text"]
             )
 
 #Função para capturar os dados pessoais e enviar os dados
@@ -52,6 +54,24 @@ def get_user_info_and_submit(tab):
             elif birth_date and not validate_date_format(birth_date):
                 st.error("Formato de Data de Nascimento inválido. Por favor, use DIA/MÊS/ANO.")
             else:
+                user_info = {
+                    'first_name': first_name,
+                    'last_name': last_name,
+                    'email': email,
+                    'birth_date': birth_date,
+                    'city': city,
+                    'state': state,
+                    'role': role
+                }
+                responses = {}
+                for tab_name, questions in questions_dict.items():
+                    tab_responses = {}
+                    for question in questions:
+                        answer = st.session_state.get(question["text"])
+                        tab_responses[question["text"]] = answer
+                    responses[tab_name] = tab_responses
+                db_credentials = st.secrets["secrets"]
+                insert_data(user_info, responses, db_credentials)
                 st.success("Dados enviados com sucesso!")
             
 def validate_date_format(date_str):
