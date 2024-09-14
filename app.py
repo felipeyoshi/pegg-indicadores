@@ -1,3 +1,4 @@
+import datetime
 import streamlit as st
 
 custom_css = """
@@ -7,12 +8,8 @@ custom_css = """
             font-size: 0px;
         }
         </style>
+
         """
-
-st.image('./images/pegg_header.jpeg')
-
-# Criando abas para cada princípio
-tabs = st.tabs(["GENTILEZA", "GENEROSIDADE", "SOLIDARIEDADE", "SUSTENTABILIDADE", "DIVERSIDADE", "RESPEITO", "CIDADANIA"])
 
 # Função para exibir perguntas com sliders
 def show_questions(questions, tab):
@@ -24,6 +21,50 @@ def show_questions(questions, tab):
                 options=question["format"],
                 value=question["format"][2] # valor padrão como "Neutro" ou "Às vezes"
             )
+
+#Função para capturar os dados pessoais e enviar os dados
+def get_user_info_and_submit(tab):
+    with tab:
+        with st.form("form_relatorio"):
+            st.header("Informações Pessoais")
+            first_name = st.text_input("Nome *")
+            last_name = st.text_input("Sobrenome *")
+            email = st.text_input("* Email *")
+            birth_date = st.text_input("Data de Nascimento (DIA/MÊS/ANO) *", value=None)
+            city = st.text_input("Cidade *")
+            state = st.text_input("Estado *")
+            role = st.text_input("Profissão / Atividade Exercida *")
+            terms = st.checkbox("Li e aceito os Termos de Uso *")
+            news = st.checkbox("Eu quero receber novidades e outras informações")
+            submitted = st.form_submit_button("Enviar!")
+
+        with open("./pdf/termos.pdf", "rb") as file:
+            btn = st.download_button(
+                label="Ler os Termos de Uso",
+                data=file,
+                file_name="Termos-e-Condicoes-de-Uso_EGG_2024.pdf",
+                mime="application/pdf"
+                )
+
+        if submitted:
+            if not (first_name and last_name and email and birth_date and city and state and role and terms):
+                st.warning("Por favor, preencha todos os campos obrigatórios.")
+            elif birth_date and not validate_date_format(birth_date):
+                st.error("Formato de Data de Nascimento inválido. Por favor, use DIA/MÊS/ANO.")
+            else:
+                st.success("Dados enviados com sucesso!")
+            
+def validate_date_format(date_str):
+    try:
+        datetime.datetime.strptime(date_str, '%d/%m/%Y')
+        return True
+    except ValueError:
+        return False
+
+st.image('./images/pegg_header.jpeg')
+
+# Criando abas para cada princípio
+tabs = st.tabs(["GENTILEZA", "GENEROSIDADE", "SOLIDARIEDADE", "SUSTENTABILIDADE", "DIVERSIDADE", "RESPEITO", "CIDADANIA", "DADOS"])
 
 # Definindo todas as perguntas para cada aba
 questions_dict = {
@@ -86,3 +127,5 @@ show_questions(questions_dict["Sustentabilidade"], tabs[3])
 show_questions(questions_dict["Diversidade"], tabs[4])
 show_questions(questions_dict["Respeito"], tabs[5])
 show_questions(questions_dict["Cidadania"], tabs[6])
+
+user_info = get_user_info_and_submit(tabs[7])
