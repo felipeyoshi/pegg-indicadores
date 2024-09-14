@@ -21,10 +21,10 @@ def insert_data(user_info, responses, db_credentials):
         cursor = connection.cursor()
 
         query_user = """
-            INSERT INTO pegg_2024_usuarios (nome, sobrenome, email, data_nascimento, cidade, estado, profissao)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
+            INSERT INTO pegg_2024_usuarios (nome, sobrenome, email, data_nascimento, cidade, estado, profissao, termo, news)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
         """
-        user_data = (user_info['first_name'], user_info['last_name'], user_info['email'], birth_date_formatted, user_info['city'], user_info['state'], user_info['role'])
+        user_data = (user_info['first_name'], user_info['last_name'], user_info['email'], birth_date_formatted, user_info['city'], user_info['state'], user_info['role'], user_info['terms'], user_info['news'])
         cursor.execute(query_user, user_data)
         user_id = cursor.lastrowid
 

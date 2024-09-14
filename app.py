@@ -61,7 +61,9 @@ def get_user_info_and_submit(tab):
                     'birth_date': birth_date,
                     'city': city,
                     'state': state,
-                    'role': role
+                    'role': role,
+                    'terms': terms,
+                    'news': news
                 }
                 responses = {}
                 for tab_name, questions in questions_dict.items():
