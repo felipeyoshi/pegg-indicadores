@@ -115,31 +115,35 @@ questions_dict = {
         {"text": "Qual é a sua percepção sobre a colaboração e o apoio entre as lideranças de departamentos diferentes?", "format": ["Muito insatisfatória", "Insatisfatória", "Neutra", "Satisfatória", "Muito satisfatória"]}
     ],
     "Sustentabilidade": [
-        {"text": "A empresa adota práticas sustentáveis e ecológicas em suas operações diárias?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
-        {"text": "Você recebe informações e treinamentos sobre práticas sustentáveis e como contribuir para elas no trabalho?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
-        {"text": "Como você avalia o compromisso da empresa com a redução do impacto ambiental?", "format": ["Muito insatisfatória", "Insatisfatória", "Neutra", "Satisfatória", "Muito satisfatória"]},
-        {"text": "Você acredita que a empresa incentiva práticas sustentáveis entre os colaboradores?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "A empresa adota práticas sustentáveis em suas relações com a sociedade e com o mercado, assim como ecológicas, em suas operações diárias?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "Você adota práticas práticas sustentáveis em suas relações com a sociedade e com o mercado e ecológicas em suas operações diárias, especialmente no ambiente de trabalho?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "Você recebe de seus líderes informações e treinamentos sobre práticas sustentáveis e como contribuir para elas no trabalho?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "A empresa tem um compromisso sério e formalizado sobre redução do impacto ambiental e aplicação de práticas sustentáveis em todas as suas relações?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "Você acredita que a empresa incentiva práticas sustentáveis entre os colaboradores e a comunidade?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
         {"text": "Qual é a sua percepção sobre o impacto das práticas de sustentabilidade da empresa na sua própria experiência de trabalho?", "format": ["Muito negativo", "Negativo", "Neutro", "Positivo", "Muito positivo"]}
     ],
     "Diversidade": [
-        {"text": "A empresa promove e valoriza a diversidade em suas práticas de recrutamento e seleção?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "A empresa promove e valoriza a diversidade em suas práticas de recrutamento e seleção, retenção e relacionamento com colaboradores?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "Você se considera uma pessoa inclusiva e aberta a acolher a diversidade, tanto de raça, gênero, cultura e crenças como de opiniões diversas das suas?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
         {"text": "Você sente que diferentes perspectivas e experiências são respeitadas e valorizadas no ambiente de trabalho?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
         {"text": "Existem políticas ou práticas na empresa que apoiam a inclusão de grupos diversos?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
-        {"text": "Como você avalia o nível de diversidade em sua equipe ou departamento?", "format": ["Muito insatisfatória", "Insatisfatória", "Neutra", "Satisfatória", "Muito satisfatória"]},
+        {"text": "Qual é o nível de diversidade de raça, gênero, classe socioecômica, nível de estudo, entre outros grupos de pertencimento, em sua equipe ou departamento?", "format": ["Muito insatisfatória", "Insatisfatória", "Neutra", "Satisfatória", "Muito satisfatória"]},
         {"text": "Você tem acesso a oportunidades de desenvolvimento e crescimento profissional independentemente do seu grupo de pertencimento?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]}
     ],
     "Respeito": [
-        {"text": "Os colaboradores são tratados com respeito em todas as interações, independentemente de suas funções ou cargos?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "Os colaboradores são tratados pela liderança com respeito em todas as interações, independentemente de suas funções ou cargos, raças ou credos?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "Você trata seus colegas de trabalho e demais colaboradores com respeito em todas as interações, independentemente de suas funções ou cargos, raças ou credos?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
         {"text": "Você se sente respeitado pela liderança e pelos colegas no ambiente de trabalho?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
         {"text": "A empresa tem políticas claras contra discriminação e assédio, e as aplica de forma eficaz?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
         {"text": "Você acredita que a comunicação na empresa é feita de maneira respeitosa e construtiva?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
-        {"text": "Como você avalia o tratamento recebido quando expressa suas opiniões ou feedbacks?", "format": ["Muito insatisfatória", "Insatisfatória", "Neutra", "Satisfatória", "Muito satisfatória"]}
+        {"text": "Como você avalia o tratamento que recebe de su líder quando expressa suas opiniões ou feedbacks?", "format": ["Muito insatisfatória", "Insatisfatória", "Neutra", "Satisfatória", "Muito satisfatória"]}
     ],
     "Cidadania": [
-        {"text": "A empresa se envolve em atividades ou iniciativas que beneficiam a comunidade local?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
-        {"text": "Você é incentivado a participar de ações de voluntariado ou projetos comunitários promovidos pela empresa?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
-        {"text": "Como você avalia o impacto das ações da empresa em relação à responsabilidade social e cidadania?", "format": ["Muito insatisfatória", "Insatisfatória", "Neutra", "Satisfatória", "Muito satisfatória"]},
-        {"text": "A empresa promove práticas de responsabilidade social e ambiental que refletem seu compromisso com a cidadania corporativa?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "Você se envolve em atividades ou iniciativas que beneficiam a comunidade local e demonstram a sua participação social?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "A empresa se envolve em atividades ou iniciativas que beneficiam a comunidade local e demonstram a sua participação social?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "Você é incentivado pela liderança a participar de ações de voluntariado, projetos comunitários ou ações de participação cidadã promovidos pela empresa?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "Como você avalia o impacto das ações da empresa em relação à participação social e cidadania?", "format": ["Muito insatisfatória", "Insatisfatória", "Neutra", "Satisfatória", "Muito satisfatória"]},
+        {"text": "A empresa promove práticas de participação social e ambiental que refletem seu compromisso com a cidadania corporativa?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
         {"text": "Você sente que a empresa valoriza e reconhece suas contribuições para a comunidade e para causas sociais?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]}
     ]
 }
