@@ -91,25 +91,28 @@ tabs = st.tabs(["GENTILEZA", "GENEROSIDADE", "SOLIDARIEDADE", "SUSTENTABILIDADE"
 # Definindo todas as perguntas para cada aba
 questions_dict = {
     "Gentileza": [
-        {"text": "Com que frequência você sente que seus colegas são gentis e acolhedores em suas interações diárias?", "format": ["Nunca", "Raramente", "Às vezes", "Frequentemente", "Sempre"]},
-        {"text": "Você acredita que a liderança demonstra gentileza e consideração ao lidar com os membros da equipe?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
-        {"text": "Você se sente à vontade para expressar suas preocupações e sugestões de maneira respeitosa e gentil?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
-        {"text": "Como você avalia a atitude geral de gentileza em reuniões e interações de grupo?", "format": ["Muito insatisfatória", "Insatisfatória", "Neutra", "Satisfatória", "Muito satisfatória"]},
-        {"text": "A empresa promove iniciativas ou atividades que incentivam a prática de gentileza no ambiente de trabalho?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]}
+        {"text": "Você acha que seus colegas de trabalho são gentis e acolhedores em suas interações informais do dia a dia, como cumprimentar e dar passagem?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "Você acha que você é gentil e acolhedor em suas interações informais do dia a dia, como cumprimentar e dar passagem?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "Você acredita que a liderança demonstra gentileza e consideração ao lidar com os membros da equipe, usando comunicação gentil e não-violenta?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "Quando acontece algum desafio de convivência, você se sente à vontade para expressar suas preocupações e dar sugestões junto aos seus líderes e pares?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "Como você avalia a atitude geral de gentileza e compreensão em reuniões e interações técnicas de trabalho envolvendo prazos e urgências?", "format": ["Muito insatisfatória", "Insatisfatória", "Neutra", "Satisfatória", "Muito satisfatória"]},
+        {"text": "A empresa promove iniciativas ou atividades que incentivam a prática de gentileza no ambiente de trabalho, reforçando a importância destas atitudes?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]}
     ],
     "Generosidade": [
-        {"text": "Você observa que os colegas estão dispostos a ajudar uns aos outros, mesmo quando não há um benefício imediato para eles?", "format": ["Nunca", "Raramente", "Às vezes", "Frequentemente", "Sempre"]},
-        {"text": "A empresa incentiva ou recompensa comportamentos generosos entre os colaboradores?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
-        {"text": "Quando você precisa de assistência, você sente que pode contar com seus colegas para ajudar?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
-        {"text": "Você acredita que a generosidade é um valor reconhecido e valorizado pela liderança da empresa?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
-        {"text": "Como você avalia a disponibilidade dos colegas para compartilhar conhecimentos e recursos?", "format": ["Muito insatisfatória", "Insatisfatória", "Neutra", "Satisfatória", "Muito satisfatória"]}
+        {"text": "Quando você observa que os colegas de trabalho estão dispostos a ajudar uns aos outros, doando tempo, conhecimento, boa vontade, mesmo quando não há um benefício imediato para eles?", "format": ["Nunca", "Raramente", "Às vezes", "Frequentemente", "Sempre"]},
+        {"text": "Quando você está disposto a ajudar os seus colegas doando tempo, conhecimento, boa vontade, mesmo quando não há um benefício imediato para você?", "format": ["Nunca", "Raramente", "Às vezes", "Frequentemente", "Sempre"]},
+        {"text": "A empresa incentiva ou recompensa comportamentos generosos entre os colaboradores, promovendo campanhas e ações de doação e voluntariado, por exemplo?", "format": ["Nunca", "Raramente", "Às vezes", "Frequentemente", "Sempre"]},
+        {"text": "Quando você precisa de assistência ou alguma negociação especial, de tempo e/ou dinheiro, você sente que pode contar com a empresa para ajudar?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "Você acredita que a generosidade para com o time e para com o próximo é um valor reconhecido e valorizado pela liderança da empresa?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "Como você avalia a disponibilidade seu líder para compartilhar conhecimentos e recursos?", "format": ["Muito insatisfatória", "Insatisfatória", "Neutra", "Satisfatória", "Muito satisfatória"]}
     ],
     "Solidariedade": [
-        {"text": "Você percebe que há um bom nível de apoio entre colegas em momentos de dificuldade?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "Você percebe que há um bom nível de apoio entre colegas em momentos de dificuldade, no desenvolvimento de um projeto ou em uma entrega?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
+        {"text": "Você percebe é uma referência quando o assunto é apoio entre seus colegas em momentos de dificuldade, no desenvolvimento de um projeto ou em uma entrega?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
         {"text": "A empresa promove atividades ou eventos que incentivam a solidariedade e o trabalho em equipe?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
         {"text": "Quando ocorrem desafios ou crises, você sente que a equipe se une para enfrentá-los?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
         {"text": "Você sente que a empresa oferece suporte adequado aos colaboradores que enfrentam problemas pessoais ou profissionais?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
-        {"text": "Qual é a sua percepção sobre a colaboração e o apoio entre departamentos diferentes?", "format": ["Muito insatisfatória", "Insatisfatória", "Neutra", "Satisfatória", "Muito satisfatória"]}
+        {"text": "Qual é a sua percepção sobre a colaboração e o apoio entre as lideranças de departamentos diferentes?", "format": ["Muito insatisfatória", "Insatisfatória", "Neutra", "Satisfatória", "Muito satisfatória"]}
     ],
     "Sustentabilidade": [
         {"text": "A empresa adota práticas sustentáveis e ecológicas em suas operações diárias?", "format": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]},
