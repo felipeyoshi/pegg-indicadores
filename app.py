@@ -1,5 +1,6 @@
 import datetime
 import streamlit as st
+import plotly.graph_objects as go
 from utils.mysql_utils import insert_data
 
 custom_css = """
@@ -11,6 +12,52 @@ custom_css = """
         </style>
 
         """
+
+
+def map_answer_to_score(answer):
+    rating_scale = {
+        "Discordo totalmente": 1,
+        "Discordo": 2,
+        "Neutro": 3,
+        "Concordo": 4,
+        "Concordo totalmente": 5,
+        "Muito insatisfatória": 1,
+        "Insatisfatória": 2,
+        "Neutra": 3,
+        "Satisfatória": 4,
+        "Muito satisfatória": 5,
+        "Nunca": 1,
+        "Raramente": 2,
+        "Às vezes": 3,
+        "Frequentemente": 4,
+        "Sempre": 5,
+        "Muito negativo": 1,
+        "Negativo": 2,
+        "Neutro": 3,
+        "Positivo": 4,
+        "Muito positivo": 5
+    }
+    return rating_scale.get(answer, 0)
+
+def plot_gauge(score, title, max_val, labels, colors):
+    fig = go.Figure(go.Indicator(
+        mode="gauge+number",
+        value=score,
+        title={'text': title},
+        domain={'x': [0, 1], 'y': [0, 1]},
+        gauge={
+            'axis': {'range': [6, max_val]},
+            'bar': {'color': '#EE7798'},
+            'steps': [
+                {'range': [labels[i], labels[i+1]], 'color': colors[i]} for i in range(len(labels)-1)
+            ]
+        }
+    ))
+    config = {
+        'displayModeBar': False
+    }
+    st.plotly_chart(fig, use_container_width=True, config=config)
+    return fig
 
 # Função para exibir perguntas com sliders
 def show_questions(questions, tab):
@@ -75,6 +122,190 @@ def get_user_info_and_submit(tab):
                 db_credentials = st.secrets["secrets"]
                 insert_data(user_info, responses, db_credentials)
                 st.success("Dados enviados com sucesso!")
+
+                # Cálculo das pontuações e geração do relatório
+                topic_scores = {}
+                for topic, answers in responses.items():
+                    total_score = 0
+                    for question_text, answer in answers.items():
+                        score = map_answer_to_score(answer)
+                        total_score += score
+                    topic_scores[topic] = total_score
+                
+                # Definição das avaliações e recomendações
+                evaluations = {
+                    "Gentileza": {
+                        "title": "Gentileza gera relações de trabalho mais saudáveis, produtivas e felizes.",
+                        "ranges": [
+                            {
+                                "min": 6, "max": 10,
+                                "evaluation": "Baixa percepção de gentileza em circulação: perigo.",
+                                "recommendation": "Recomendação: criar plano de emergência para colocar a gentileza em prática."
+                            },
+                            {
+                                "min": 11, "max": 20,
+                                "evaluation": "Percepção de gentileza na média, mas pode ser melhor: atenção.",
+                                "recommendation": "Recomendação: mapear onde/quando/como reforçar a prática de gestos gentis."
+                            },
+                            {
+                                "min": 21, "max": 30,
+                                "evaluation": "Percepção de gentileza em alta: manter e surpreender.",
+                                "recommendation": "Recomendação: transformar a experiência em estudo de boas práticas para inspirar outros modelos de negócio."
+                            }
+                        ]
+                    },
+                    "Generosidade": {
+                        "title": "Gestos de generosidade são poderosos. Toda a equipe ganha com isso.",
+                        "ranges": [
+                            {
+                                "min": 6, "max": 10,
+                                "evaluation": "Baixa percepção de generosidade em circulação: perigo.",
+                                "recommendation": "Recomendação: criar plano de emergência para colocar a generosidade em prática."
+                            },
+                            {
+                                "min": 11, "max": 20,
+                                "evaluation": "Percepção de generosidade na média, mas pode ser melhor: atenção.",
+                                "recommendation": "Recomendação: mapear onde/quando/como reforçar a prática de gestos generosos."
+                            },
+                            {
+                                "min": 21, "max": 30,
+                                "evaluation": "Percepção de generosidade em alta: manter e surpreender.",
+                                "recommendation": "Recomendação: transformar a experiência em estudo de boas práticas para inspirar outros modelos de negócio."
+                            }
+                        ]
+                    },
+                    "Solidariedade": {
+                        "title": "Solidariedade é um sistema complexo. É uma rede de inteligência coletiva.",
+                        "ranges": [
+                            {
+                                "min": 6, "max": 10,
+                                "evaluation": "Baixa percepção de solidariedade em circulação: perigo.",
+                                "recommendation": "Recomendação: criar plano de emergência para colocar a solidariedade em prática."
+                            },
+                            {
+                                "min": 11, "max": 20,
+                                "evaluation": "Percepção de solidariedade na média, mas pode ser melhor: atenção.",
+                                "recommendation": "Recomendação: mapear onde/quando/como reforçar a prática de gestos solidários."
+                            },
+                            {
+                                "min": 21, "max": 30,
+                                "evaluation": "Percepção de solidariedade em alta: manter e surpreender.",
+                                "recommendation": "Recomendação: transformar a experiência em estudo de boas práticas para inspirar outros modelos de negócio."
+                            }
+                        ]
+                    },
+                    "Sustentabilidade": {
+                        "title": "Antes de qualquer decisão, de RH ou de gestão, pense na sustentabilidade.",
+                        "ranges": [
+                            {
+                                "min": 6, "max": 10,
+                                "evaluation": "Baixa percepção de sustentabilidade em circulação: perigo.",
+                                "recommendation": "Recomendação: criar plano de emergência para colocar a sustentabilidade em prática."
+                            },
+                            {
+                                "min": 11, "max": 20,
+                                "evaluation": "Percepção de sustentabilidade na média, mas pode ser melhor: atenção.",
+                                "recommendation": "Recomendação: mapear onde/quando/como reforçar a prática de gestos sustentáveis."
+                            },
+                            {
+                                "min": 21, "max": 30,
+                                "evaluation": "Percepção de sustentabilidade em alta: manter e surpreender.",
+                                "recommendation": "Recomendação: transformar a experiência em estudo de boas práticas para inspirar outros modelos de negócio."
+                            }
+                        ]
+                    },
+                    "Diversidade": {
+                        "title": "Diversidade é multiplicidade de ideias. Amplie os seus horizontes.",
+                        "ranges": [
+                            {
+                                "min": 6, "max": 10,
+                                "evaluation": "Baixa percepção de diversidade em circulação: perigo.",
+                                "recommendation": "Recomendação: criar plano de emergência para colocar a diversidade em prática."
+                            },
+                            {
+                                "min": 11, "max": 20,
+                                "evaluation": "Percepção de diversidade na média, mas pode ser melhor: atenção.",
+                                "recommendation": "Recomendação: mapear onde/quando/como reforçar a prática de inclusão."
+                            },
+                            {
+                                "min": 21, "max": 30,
+                                "evaluation": "Percepção de diversidade em alta: manter e surpreender.",
+                                "recommendation": "Recomendação: transformar a experiência em estudo de boas práticas para inspirar outros modelos de negócio."
+                            }
+                        ]
+                    },
+                    "Respeito": {
+                        "title": "Respeito não é uma opção. É uma condição para se trabalhar bem.",
+                        "ranges": [
+                            {
+                                "min": 6, "max": 10,
+                                "evaluation": "Baixa percepção de respeito em circulação: perigo.",
+                                "recommendation": "Recomendação: criar plano de emergência para colocar o respeito em prática."
+                            },
+                            {
+                                "min": 11, "max": 20,
+                                "evaluation": "Percepção de respeito na média, mas pode ser melhor: atenção.",
+                                "recommendation": "Recomendação: mapear onde/quando/como reforçar a prática de gestos respeitosos."
+                            },
+                            {
+                                "min": 21, "max": 30,
+                                "evaluation": "Percepção de respeito em alta: manter e surpreender.",
+                                "recommendation": "Recomendação: transformar a experiência em estudo de boas práticas para inspirar outros modelos de negócio."
+                            }
+                        ]
+                    },
+                    "Cidadania": {
+                        "title": "Cidadania é exercer direitos e deveres também, no trabalho e na sociedade.",
+                        "ranges": [
+                            {
+                                "min": 6, "max": 10,
+                                "evaluation": "Baixa percepção de cidadania em circulação: perigo.",
+                                "recommendation": "Recomendação: criar plano de emergência para colocar a cidadania em prática."
+                            },
+                            {
+                                "min": 11, "max": 20,
+                                "evaluation": "Percepção de cidadania na média, mas pode ser melhor: atenção.",
+                                "recommendation": "Recomendação: mapear onde/quando/como reforçar a prática de participação cidadã."
+                            },
+                            {
+                                "min": 21, "max": 30,
+                                "evaluation": "Percepção de cidadania em alta: manter e surpreender.",
+                                "recommendation": "Recomendação: transformar a experiência em estudo de boas práticas para inspirar outros modelos de negócio."
+                            }
+                        ]
+                    }
+                }
+
+                # Função para obter a avaliação e recomendação
+                def get_evaluation(topic, score):
+                    topic_eval = evaluations.get(topic)
+                    if not topic_eval:
+                        return "", "", ""
+                    title = topic_eval["title"]
+                    for range_info in topic_eval["ranges"]:
+                        if range_info["min"] <= score <= range_info["max"]:
+                            evaluation = range_info["evaluation"]
+                            recommendation = range_info.get("recommendation", "")
+                            break
+                    else:
+                        evaluation = "Score fora do intervalo esperado."
+                        recommendation = ""
+                    return title, evaluation, recommendation
+
+                # Exibição do relatório
+                st.header("Relatório de Avaliação")
+                for topic, score in topic_scores.items():
+                    title, evaluation_text, recommendation_text = get_evaluation(topic, score)
+                    st.subheader(title)
+                    st.write(f"**Pontuação:** {score}")
+                    st.write(f"**{evaluation_text}**")
+                    st.write(f"**{recommendation_text}**")
+                    # Gerar gráfico gauge
+                    max_score = 30  # Pontuação máxima possível
+                    labels = [6, 11, 21, 30]  # Intervalos das avaliações
+                    colors = ['red', 'yellow', 'green']  # Cores correspondentes
+                    plot_gauge(score, topic, max_score, labels, colors)
+                    st.markdown("---")  # Linha separadora entre os tópicos
             
 def validate_date_format(date_str):
     try:
