@@ -121,7 +121,7 @@ def get_user_info_and_submit(tab):
                     responses[tab_name] = tab_responses
                 db_credentials = st.secrets["secrets"]
                 insert_data(user_info, responses, db_credentials)
-                st.success("Dados enviados com sucesso!")
+                st.success("Dados enviados com sucesso! Veja o resultado abaixo.")
 
                 # Cálculo das pontuações e geração do relatório
                 topic_scores = {}
@@ -136,6 +136,7 @@ def get_user_info_and_submit(tab):
                 evaluations = {
                     "Gentileza": {
                         "title": "Gentileza gera relações de trabalho mais saudáveis, produtivas e felizes.",
+                        "description": "Um ambiente de trabalho que cultiva o clima corporativo gentil tem muito a ganhar com isso. Mesmo nas situações complicadas e urgentes, praticar a gentileza transforma a pressa em solicitude, e a pressão em solução. Gritar, perder a paciência, ofender gratuitamente as pessoas e entrar em desespero tomando medidas inconsequentes são exemplos de atitudes descontroladas que não levam a nada. E mais: desestabilizam toda a equipe, gerando medo e desmotivação.Em tempos de burn out, stress generalizado e baixa tolerância a opiniões diferentes, colocar a gentileza em prática pode melhorar, e muito, a qualidade de vida no ambiente de trabalho. Experimente.",
                         "ranges": [
                             {
                                 "min": 6, "max": 10,
@@ -156,6 +157,7 @@ def get_user_info_and_submit(tab):
                     },
                     "Generosidade": {
                         "title": "Gestos de generosidade são poderosos. Toda a equipe ganha com isso.",
+                        "description": "Promover o compartilhar, o colaborar e o contribuir em um ambiente de trabalho pode transformar não apenas as relações entre as pessoas como os níveis gerais de produtividade. Saber a importância de distribuir conhecimento, acessos, informações, boas energias e soluções, para dentro e fora do modelo de negócio, fortalece o senso de pertencimento dos colaboradores e estimula a visão altruísta. Com tanta competitividade agressiva em circulação, com o egoísmo e a valorização exagerada do “eu” em divulgação, especialmente nas redes sociais, fazer o exercício de pensar em “nós” e em “estamos juntos” pode fazer toda a diferença. Vale testar.",
                         "ranges": [
                             {
                                 "min": 6, "max": 10,
@@ -176,6 +178,7 @@ def get_user_info_and_submit(tab):
                     },
                     "Solidariedade": {
                         "title": "Solidariedade é um sistema complexo. É uma rede de inteligência coletiva.",
+                        "description": "Estimular a solidariedade no ambiente de trabalho é uma inspiração da liderança, mas uma responsabilidade mútua, recíproca, que surge no sentimento de identificação das necessidades do outro. Significa entender que, cada um com uas habilidades e áreas de atuação, ninguém é melhor que ninguém pois existe uma interdependência: todos estão conectados e, sozinho, não dá para ir longe. Apesar das falas de “cada um por si”, promovendo a desunião e a competição desenfreada, é tempo de atuar em conjunto, repensar a lógica das relações e reunir o que cada um tem de melhor para poder potencializar.",
                         "ranges": [
                             {
                                 "min": 6, "max": 10,
@@ -196,6 +199,7 @@ def get_user_info_and_submit(tab):
                     },
                     "Sustentabilidade": {
                         "title": "Antes de qualquer decisão, de RH ou de gestão, pense na sustentabilidade.",
+                        "description": "Ambientes de trabalho sustentáveis se preocupam não apenas com o meio ambiente, mas com a saudabilidade de todos os espaços de relacionamento e produtividade, físicos e virtuais. Não adianta fazer divulgação de políticas corporativas positivas se, na essência, nada disso é verídico por não ser colocado em prática. Falar é fácil, e fazer dá trabalho e gera investimentos, mas vale muito. Quando a sustentabilidade se transforma em um hábito, tudo muda, especialmente o comprometimento das pessoas, que passam a confiar nas promessas e nas atitudes dos modelos de negócios para os quais trabalham.",
                         "ranges": [
                             {
                                 "min": 6, "max": 10,
@@ -216,6 +220,7 @@ def get_user_info_and_submit(tab):
                     },
                     "Diversidade": {
                         "title": "Diversidade é multiplicidade de ideias. Amplie os seus horizontes.",
+                        "description": "Quanto o assunto é diversidade no ambiente de trabalho, todo mundo diz que respeita, mas nem todo mundo pratica. Há muitos preconceitos e julgamentos estruturais, e lidar com isso é desafiador. Tem a ver com a capacidade de receber, incluir, acolher e respeitar a pluralidade das pessoas, com suas histórias, crenças, estilos de vida, jeitos de ser por fora e por dentro, com tudo o que é diverso, múltiplo, variado. A diversidade realmente colocada em prática é pura potência, é força aplicada com a riqueza do que há de melhor, no diverso. Ninguém disse que é fácil de implementar, mas impossível também não é. Para saber, precisa implementar.",
                         "ranges": [
                             {
                                 "min": 6, "max": 10,
@@ -236,6 +241,7 @@ def get_user_info_and_submit(tab):
                     },
                     "Respeito": {
                         "title": "Respeito não é uma opção. É uma condição para se trabalhar bem.",
+                        "description": "Quando o assunto é respeito no ambiente de trabalho, todo mundo quer ser respeitado. Mas será o mesmo na hora de respeitar, tolerar, considerar e acolher? Saber levar em consideração as escolhas e os contextos das outras pessoas é primordial em todas as interações sociais, e deixa tudo mais claro, visível e aferível. O respeito estimula o bom convívio coletivo, evitando julgamentos, atitudes de reprovação e ofensas, que podem gerar imparcialidade e injustiça. Os benefícios são inúmeros, e o resultado é sempre positivo.",
                         "ranges": [
                             {
                                 "min": 6, "max": 10,
@@ -256,6 +262,7 @@ def get_user_info_and_submit(tab):
                     },
                     "Cidadania": {
                         "title": "Cidadania é exercer direitos e deveres também, no trabalho e na sociedade.",
+                        "description": "Exigir seus direitos no ambiente de trabalho é importante e cumprir com seus deveres também. O importante é saber participar: muitos reclamam, mas não fazem nada a não ser promover o teor tóxico das relações gerando fofocas e mal-estar ao invés de buscar uma forma de ajudar, seja qual for o desafio. É hora de sair da zona de conforto e atuar, em conjunto, para melhorar. De nada adianta o desejo de ser um cidadão do mundo se as pessoas não conseguem exercer seu papel cidadão em suas próprias casas, comunidades e ambientes de trabalho. Sempre é tempo de promover um ambiente propício, a partir do exemplo da liderança, e começar.",
                         "ranges": [
                             {
                                 "min": 6, "max": 10,
@@ -282,6 +289,7 @@ def get_user_info_and_submit(tab):
                     if not topic_eval:
                         return "", "", ""
                     title = topic_eval["title"]
+                    description = topic_eval["description"]
                     for range_info in topic_eval["ranges"]:
                         if range_info["min"] <= score <= range_info["max"]:
                             evaluation = range_info["evaluation"]
@@ -290,13 +298,14 @@ def get_user_info_and_submit(tab):
                     else:
                         evaluation = "Score fora do intervalo esperado."
                         recommendation = ""
-                    return title, evaluation, recommendation
+                    return title, description, evaluation, recommendation
 
                 # Exibição do relatório
                 st.header("Relatório de Avaliação")
                 for topic, score in topic_scores.items():
-                    title, evaluation_text, recommendation_text = get_evaluation(topic, score)
+                    title, description, evaluation_text, recommendation_text = get_evaluation(topic, score)
                     st.subheader(title)
+                    st.write(f"{description}")
                     st.write(f"**Pontuação:** {score}")
                     st.write(f"**{evaluation_text}**")
                     st.write(f"**{recommendation_text}**")
